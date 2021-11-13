@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domain</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" placeholder="Enter usename" id="name" name="name" />
+        <input type="password" placeholder="Enter Password" id="password" name="password" />
+        <button type="submit">Login</button>
+    </form>
+</body>
+<script>
+    const name = document.getElementById("name").value;
+    const password = document.getElementById("password").value;
+
+    // handleLogin algorithm
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async(e) => {
+        e.preventDefault();
+        console.log(name, password);
+        if (!name || !password) {
+            alert("please provide information");
+        } else {
+            const data = await fetch("http://localhost:3001/login", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: {
+                    name,
+                    password,
+                },
+            });
+            console.log(await data.json());
+        }
+    });
+</script>
+
+</html>
