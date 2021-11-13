@@ -16,8 +16,10 @@
     </form>
 </body>
 <script>
-    const name = document.getElementById("name").value;
-    const password = document.getElementById("password").value;
+    const name = document.querySelector("name").value;
+    const password = document.querySelector("password").value;
+
+    console.log(name, password);
 
     // handleLogin algorithm
     const form = document.querySelector("form");
